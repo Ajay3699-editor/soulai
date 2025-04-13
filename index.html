@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SoulAI - Home</title>
-  <!-- Add the favicon pointing to logo.png in the soulmate-agi folder -->
-  <link rel="icon" type="image/png" href="soulmate-agi/logo.png" />
+  <title>SoulAI - Welcome</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="icon" type=""image/x-icon" href="fav.jpg">
   <style>
     * {
       margin: 0;
@@ -16,245 +15,72 @@
     }
 
     body {
+      height: 100vh;
       background: linear-gradient(135deg, #f0f7ff, #f9e8ff);
-      overflow-x: hidden;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 1rem 2rem;
-      background: #ffffffcc;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
-
-    .nav-bar {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .nav-bar a {
-      color: #6a1b9a;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-    }
-
-    .nav-bar a:hover {
-      color: #4a148c;
-    }
-
-    .user-account {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .user-icon {
-      background-color: #6a1b9a;
-      color: white;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .user-icon:hover {
-      transform: scale(1.1);
-    }
-
-    .user-menu {
-      display: none;
-      position: absolute;
-      top: 50px;
-      right: 0;
-      background: #fff;
-      border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1001;
-      width: 200px;
-    }
-
-    .user-menu p {
-      color: #4a148c;
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-      word-break: break-all;
-    }
-
-    .user-menu div {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .user-menu span {
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .user-menu span:hover {
-      transform: scale(1.2);
-    }
-
-    .user-menu button {
-      width: 100%;
-      padding: 0.5rem;
-      background-color: #6a1b9a;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .user-menu button:hover {
-      background-color: #4a148c;
-    }
-
-    .slider {
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      transition: transform 0.5s ease;
-    }
-
-    .slide {
-      flex: 0 0 100%;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
+    }
+
+    .logo-container {
       text-align: center;
-      padding: 4rem 2rem;
-      animation: fadeIn 1.5s ease forwards;
+      animation: fadeIn 2s ease-in-out forwards;
     }
 
-    .slide h2 {
+    .logo-container h1 {
+      font-size: 5rem;
       color: #6a1b9a;
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
+      animation: glow 1.5s ease-in-out infinite alternate;
     }
 
-    .slide p {
+    .logo-container p {
+      font-size: 1.5rem;
       color: #4a148c;
-      font-size: 1.2rem;
-      max-width: 700px;
-      line-height: 1.6;
+      margin-top: 1rem;
+      opacity: 0;
+      animation: slideUp 1s ease forwards 0.5s;
     }
 
-    .chatbot {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #ffffffcc;
-      border-radius: 15px;
-      padding: 1rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      width: 300px;
-    }
-
-    .chatbot-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .chatbot img {
-      width: 30px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .chatbot img:hover {
-      transform: scale(1.1);
-    }
-
-    .mic.active {
-      animation: pulse 1s infinite;
-    }
-
-    .chatbot input {
-      border: none;
-      background: transparent;
-      outline: none;
-      width: 100%;
-      font-size: 1rem;
-      color: #4a148c;
-      padding: 0.5rem;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .chatbot video {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 0.5rem;
-      display: none;
-    }
-
-    .chatbot .response {
-      margin-top: 0.5rem;
-      color: #4a148c;
-      font-size: 0.9rem;
-      max-height: 100px;
-      overflow-y: auto;
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff; }
+      to { text-shadow: 0 0 20px #ab47bc, 0 0 30px #ab47bc; }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
+      from { opacity: 0; transform: scale(0.8); }
       to { opacity: 1; transform: scale(1); }
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 600px) {
-      .slide h2 {
-        font-size: 1.8rem;
+      .logo-container h1 {
+        font-size: 3rem;
       }
-      .slide p {
+      .logo-container p {
         font-size: 1rem;
-      }
-      .chatbot {
-        width: 250px;
-      }
-      .nav-bar {
-        gap: 1rem;
-      }
-      .nav-bar a {
-        font-size: 0.9rem;
-      }
-      .user-menu {
-        width: 150px;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="nav-bar">
-      <a href="#" onclick="goToSlide(0)">Home</a>
-      <a href="#" onclick="goToSlide(1)">Features</a>
-      <a href="#" onclick="goToSlide(2)">About</a>
-    </div>
-    <div class="user-account
+  <div class="logo-container">
+    <h1>SoulAI</h1>
+    <p>Your Emotional AI Companion</p>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.body.style.transition = "opacity 0.5s";
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 500);
+    }, 3000);
+  </script>
+</body>
+</html>
