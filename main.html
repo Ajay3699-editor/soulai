@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SoulAI - Home</title>
-  <!-- Add the favicon pointing to logo.png in the soulmate-agi folder -->
-  <link rel="icon" type="image/png" href="soulmate-agi/logo.png" />
+  <title>SoulAI - Login/Signup</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="icon" type=""image/x-icon" href="fav.jpg">
   <style>
     * {
       margin: 0;
@@ -16,395 +15,319 @@
     }
 
     body {
+      height: 100vh;
       background: linear-gradient(135deg, #f0f7ff, #f9e8ff);
-      overflow-x: hidden;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 1rem 2rem;
-      background: #ffffffcc;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
     }
 
-    .nav-bar {
+    .container {
+      width: 90vw;
+      max-width: 1200px;
+      height: 90vh;
+      background: #fff;
+      border-radius: 20px;
       display: flex;
-      gap: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
-    .nav-bar a {
-      color: #6a1b9a;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-    }
-
-    .nav-bar a:hover {
-      color: #4a148c;
-    }
-
-    .user-account {
-      position: relative;
+    .left {
+      flex: 1;
+      background: linear-gradient(to bottom right, #d1c4e9, #b2ebf2);
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .user-icon {
-      background-color: #6a1b9a;
-      color: white;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .user-icon:hover {
-      transform: scale(1.1);
-    }
-
-    .user-menu {
-      display: none;
-      position: absolute;
-      top: 50px;
-      right: 0;
-      background: #fff;
-      border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1001;
-      width: 200px;
-    }
-
-    .user-menu p {
       color: #4a148c;
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-      word-break: break-all;
+      animation: floatIn 2s ease forwards;
     }
 
-    .user-menu div {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
+    .left h1 {
+      font-size: 3rem;
+      animation: glow 1.5s ease-in-out infinite alternate;
     }
 
-    .user-menu span {
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .user-menu span:hover {
-      transform: scale(1.2);
-    }
-
-    .user-menu button {
-      width: 100%;
-      padding: 0.5rem;
-      background-color: #6a1b9a;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .user-menu button:hover {
-      background-color: #4a148c;
-    }
-
-    .slider {
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      transition: transform 0.5s ease;
-    }
-
-    .slide {
-      flex: 0 0 100%;
-      height: 100vh;
+    .right {
+      flex: 1;
+      padding: 2rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 4rem 2rem;
-      animation: fadeIn 1.5s ease forwards;
+      animation: fadeInRight 1.5s ease forwards;
     }
 
-    .slide h2 {
-      color: #6a1b9a;
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .slide p {
-      color: #4a148c;
-      font-size: 1.2rem;
-      max-width: 700px;
-      line-height: 1.6;
-    }
-
-    .chatbot {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
+    .form-box {
       background: #ffffffcc;
       border-radius: 15px;
-      padding: 1rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      width: 300px;
+      padding: 2rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
 
-    .chatbot-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 0.5rem;
+    .form-box h2 {
+      margin-bottom: 1rem;
+      color: #6a1b9a;
+      text-align: center;
     }
 
-    .chatbot img {
-      width: 30px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .chatbot img:hover {
-      transform: scale(1.1);
-    }
-
-    .mic.active {
-      animation: pulse 1s infinite;
-    }
-
-    .chatbot input {
-      border: none;
-      background: transparent;
-      outline: none;
-      width: 100%;
-      font-size: 1rem;
-      color: #4a148c;
-      padding: 0.5rem;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .chatbot video {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 0.5rem;
-      display: none;
-    }
-
-    .chatbot .response {
-      margin-top: 0.5rem;
-      color: #4a148c;
+    .form-box label {
       font-size: 0.9rem;
-      max-height: 100px;
-      overflow-y: auto;
+      color: #4a148c;
+      display: block;
+      margin-bottom: 0.2rem;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+    .form-box input {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
+    .form-box button {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 1rem;
+      background-color: #6a1b9a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
-    @media (max-width: 600px) {
-      .slide h2 {
-        font-size: 1.8rem;
+    .form-box button:hover {
+      background-color: #4a148c;
+      transform: scale(1.02);
+    }
+
+    .form-box p {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #4a148c;
+    }
+
+    .form-box a {
+      color: #6a1b9a;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .form-box a:hover {
+      text-decoration: underline;
+    }
+
+    .back-btn {
+      display: none;
+      background-color: #ccc;
+      margin-top: 0.5rem;
+    }
+
+    .back-btn:hover {
+      background-color: #bbb;
+      transform: scale(1.02);
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff; }
+      to { text-shadow: 0 0 20px #ab47bc; }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
       }
-      .slide p {
-        font-size: 1rem;
+      .left, .right {
+        flex: none;
+        padding: 1rem;
       }
-      .chatbot {
-        width: 250px;
-      }
-      .nav-bar {
-        gap: 1rem;
-      }
-      .nav-bar a {
-        font-size: 0.9rem;
-      }
-      .user-menu {
-        width: 150px;
+      .left h1 {
+        font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="nav-bar">
-      <a href="#" onclick="goToSlide(0)">Home</a>
-      <a href="#" onclick="goToSlide(1)">Features</a>
-      <a href="#" onclick="goToSlide(2)">About</a>
+  <div class="container">
+    <div class="left">
+      <h1>SoulAI</h1>
+      <p>Your emotional AI companion.</p>
     </div>
-    <div class="user-account">
-      <div class="user-icon" id="userIcon" onclick="toggleUserMenu()">U</div>
-      <div class="user-menu" id="userMenu">
-        <p id="userEmail">user@example.com</p>
-        <div>
-          <span onclick="setEmotion('😊')">😊</span>
-          <span onclick="setEmotion('😢')">😢</span>
-          <span onclick="setEmotion('😐')">😐</span>
+    <div class="right">
+      <div class="form-box">
+        <h2 id="formTitle">Sign Up</h2>
+        <div id="signupForm">
+          <label for="email">Email (must include @)</label>
+          <input type="email" id="email" placeholder="e.g., name@example.com" required>
+          <label for="password" id="passwordLabel" style="display:none;">Password (displayed as •••••)</label>
+          <input type="password" id="password" placeholder="Set your password" style="display:none;" required>
+          <label for="confirmPassword" id="confirmPasswordLabel" style="display:none;">Confirm Password (displayed as •••••)</label>
+          <input type="password" id="confirmPassword" placeholder="Confirm your password" style="display:none;" required>
         </div>
-        <button onclick="logout()">Logout</button>
+        <div id="loginForm" style="display:none;">
+          <label for="loginEmail">Email (must include @)</label>
+          <input type="email" id="loginEmail" placeholder="e.g., name@example.com" required>
+          <label for="loginPassword">Password (displayed as •••••)</label>
+          <input type="password" id="loginPassword" placeholder="Enter your password" required>
+        </div>
+        <button onclick="nextStep()" id="submitBtn">Next</button>
+        <button onclick="prevStep()" id="backBtn" class="back-btn">Back</button>
+        <p id="formToggle">Already have an account? <a href="#" onclick="switchToLogin()">Login</a></p>
       </div>
     </div>
-  </header>
-
-  <div class="slider" id="slider">
-    <div class="slide">
-      <h2>Welcome to SoulAI</h2>
-      <p>SoulAI is your emotional AI companion, designed to understand your voice and emotions, offering personalized support and meaningful conversations to brighten your day.</p>
-    </div>
-    <div class="slide">
-      <h2>Voice & Emotion Capture</h2>
-      <p>Our cutting-edge technology analyzes your voice tone and emotional cues to deliver empathetic responses, whether you're seeking joy, comfort, or motivation.</p>
-    </div>
-    <div class="slide">
-      <h2>Why SoulAI?</h2>
-      <p>With SoulAI, you're never alone. We adapt to your mood—celebrating your happiness, consoling your sorrows, and inspiring you to shine every day.</p>
-    </div>
-  </div>
-
-  <div class="chatbot">
-    <div class="chatbot-header">
-      <img src="https://img.icons8.com/ios-filled/50/6a1b9a/microphone.png" alt="Mic" id="mic" onclick="toggleMic()">
-      <img src="https://img.icons8.com/ios-filled/50/6a1b9a/camera.png" alt="Camera" id="camera" onclick="toggleCamera()">
-    </div>
-    <input type="text" id="chatInput" placeholder="Talk to SoulAI..." onkeypress="handleChat(event)">
-    <video id="video" autoplay></video>
-    <div class="response" id="chatResponse"></div>
   </div>
 
   <script>
-    const user = localStorage.getItem("currentUser") || "U";
-    document.getElementById("userIcon").textContent = user.charAt(0).toUpperCase();
-    document.getElementById("userEmail").textContent = user;
+    let currentStep = 1;
+    let isLogin = false;
 
-    const slider = document.getElementById("slider");
-    let currentSlide = 0;
+    const emailField = document.getElementById("email");
+    const passwordField = document.getElementById("password");
+    const confirmPasswordField = document.getElementById("confirmPassword");
+    const loginEmailField = document.getElementById("loginEmail");
+    const loginPasswordField = document.getElementById("loginPassword");
+    const submitBtn = document.getElementById("submitBtn");
+    const backBtn = document.getElementById("backBtn");
+    const formTitle = document.getElementById("formTitle");
+    const signupForm = document.getElementById("signupForm");
+    const loginForm = document.getElementById("loginForm");
+    const formToggle = document.getElementById("formToggle");
+    const passwordLabel = document.getElementById("passwordLabel");
+    const confirmPasswordLabel = document.getElementById("confirmPasswordLabel");
 
-    function goToSlide(index) {
-      currentSlide = index;
-      // Fixed syntax: Use template literal correctly
-      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    const users = JSON.parse(localStorage.getItem("soulai_users")) || {};
+
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
-    function toggleUserMenu() {
-      const menu = document.getElementById("userMenu");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
-
-    function logout() {
-      localStorage.removeItem("currentUser");
-      window.location.href = "login.html";
-    }
-
-    let currentEmotion = "😊";
-    function setEmotion(emoji) {
-      currentEmotion = emoji;
-      toggleUserMenu();
-    }
-
-    let isMicActive = false;
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.lang = "en-US";
-    recognition.interimResults = true;
-    recognition.continuous = true;
-
-    recognition.onresult = (event) => {
-      const transcript = Array.from(event.results)
-        .map(result => result[0].transcript)
-        .join("");
-      document.getElementById("chatInput").value = transcript;
-      if (event.results[event.results.length - 1].isFinal) {
-        handleChat({ key: "Enter" });
+    function hashPassword(password) {
+      let hash = 0;
+      for (let i = 0; i < password.length; i++) {
+        hash = ((hash << 5) - hash) + password.charCodeAt(i);
+        hash |= 0;
       }
-    };
-
-    recognition.onend = () => {
-      if (isMicActive) recognition.start();
-    };
-
-    function toggleMic() {
-      const mic = document.getElementById("mic");
-      isMicActive = !isMicActive;
-      mic.classList.toggle("active", isMicActive);
-      if (isMicActive) {
-        recognition.start();
-      } else {
-        recognition.stop();
-      }
+      return hash.toString();
     }
 
-    let isCameraActive = false;
-    let stream = null;
-    function toggleCamera() {
-      const video = document.getElementById("video");
-      isCameraActive = !isCameraActive;
-      if (isCameraActive) {
-        navigator.mediaDevices.getUserMedia({ video: true })
-          .then(s => {
-            stream = s;
-            video.srcObject = stream;
-            video.style.display = "block";
-            // Simulate emotion detection
-            setTimeout(() => {
-              const detectedEmotion = currentEmotion === "😊" ? "happy" : currentEmotion === "😢" ? "sad" : "neutral";
-              // Fixed syntax: Use template literal for string
-              document.getElementById("chatResponse").textContent = `Detected emotion: ${detectedEmotion}`;
-            }, 2000);
-          })
-          .catch(() => {
-            alert("Camera access denied.");
-            isCameraActive = false;
-          });
-      } else {
-        if (stream) {
-          stream.getTracks().forEach(track => track.stop());
-          video.style.display = "none";
-          document.getElementById("chatResponse").textContent = "";
+    function nextStep() {
+      if (isLogin) {
+        const email = loginEmailField.value;
+        const pass = hashPassword(loginPasswordField.value);
+        if (!validateEmail(email)) {
+          alert("Please enter a valid email with @.");
+          return;
         }
+        if (users[email] && users[email] === pass) {
+          localStorage.setItem("currentUser", email);
+          window.location.href = "main.html";
+        } else {
+          alert("Invalid email or password.");
+        }
+        return;
+      }
+
+      if (currentStep === 1) {
+        const email = emailField.value;
+        if (!validateEmail(email)) {
+          alert("Please enter a valid email with @.");
+          return;
+        }
+        emailField.style.display = "none";
+        passwordField.style.display = "block";
+        passwordLabel.style.display = "block";
+        formTitle.textContent = "Set Password";
+        currentStep++;
+        backBtn.style.display = "block";
+      } else if (currentStep === 2) {
+        const pass = passwordField.value;
+        if (pass.length < 6) {
+          alert("Password must be at least 6 characters.");
+          return;
+        }
+        passwordField.style.display = "none";
+        passwordLabel.style.display = "none";
+        confirmPasswordField.style.display = "block";
+        confirmPasswordLabel.style.display = "block";
+        formTitle.textContent = "Confirm Password";
+        currentStep++;
+      } else if (currentStep === 3) {
+        const email = emailField.value;
+        const pass = passwordField.value;
+        const confirmPass = confirmPasswordField.value;
+        if (pass !== confirmPass) {
+          alert("Passwords do not match!");
+          return;
+        }
+        if (users[email]) {
+          alert("Email already registered!");
+          return;
+        }
+        users[email] = hashPassword(pass);
+        localStorage.setItem("soulai_users", JSON.stringify(users));
+        localStorage.setItem("currentUser", email);
+        window.location.href = "main.html";
       }
     }
 
-    function handleChat(event) {
-      if (event.key !== "Enter") return;
-      const input = document.getElementById("chatInput");
-      const message = input.value.trim();
-      if (!message) return;
-
-      let response = "";
-      if (currentEmotion === "😊") {
-        response = "You're glowing with happiness! Let's share some fun vibes! 😄";
-      } else if (currentEmotion === "😢") {
-        response = "I feel you. Let's talk it out—you're not alone, and I'm here to lift you up! 🌟";
-      } else {
-        response = "Hey there! What's up? I'm ready to chat about anything! 😊";
+    function prevStep() {
+      if (currentStep === 2) {
+        passwordField.style.display = "none";
+        passwordLabel.style.display = "none";
+        emailField.style.display = "block";
+        formTitle.textContent = "Sign Up";
+        currentStep--;
+        backBtn.style.display = "none";
+      } else if (currentStep === 3) {
+        confirmPasswordField.style.display = "none";
+        confirmPasswordLabel.style.display = "none";
+        passwordField.style.display = "block";
+        passwordLabel.style.display = "block";
+        formTitle.textContent = "Set Password";
+        currentStep--;
       }
+    }
 
-      document.getElementById("chatResponse").textContent = response;
-      input.value = "";
+    function switchToLogin() {
+      isLogin = true;
+      currentStep = 1;
+      signupForm.style.display = "none";
+      loginForm.style.display = "block";
+      formTitle.textContent = "Login";
+      submitBtn.textContent = "Login";
+      backBtn.style.display = "none";
+      formToggle.innerHTML = 'Need an account? <a href="#" onclick="switchToSignup()">Sign Up</a>';
+      emailField.value = "";
+      passwordField.value = "";
+      confirmPasswordField.value = "";
+    }
+
+    function switchToSignup() {
+      isLogin = false;
+      currentStep = 1;
+      signupForm.style.display = "block";
+      loginForm.style.display = "none";
+      formTitle.textContent = "Sign Up";
+      submitBtn.textContent = "Next";
+      formToggle.innerHTML = 'Already have an account? <a href="#" onclick="switchToLogin()">Login</a>';
+      loginEmailField.value = "";
+      loginPasswordField.value = "";
     }
   </script>
 </body>
