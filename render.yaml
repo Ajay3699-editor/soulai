@@ -8,4 +8,6 @@ services:
     envVars:
       - key: PORT
         value: 10000
+      - key: GEMINI_API_KEY
+        value: AIzaSyBzWEOUNLIhEc8-3K3Lw-wRU0jYxvawZ9I
     autoDeploy: true
