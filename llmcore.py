@@ -1,15 +1,17 @@
 # llmcore.py
-
 import google.generativeai as genai
+import os
 
-# Gemini API key
-API_KEY = "AIzaSyBrVmvZXwJla5NL2dw8ujo727Ffqpi4KlQ"
+# ✅ Read API key from environment variable
+API_KEY = os.getenv("GEMINI_API_KEY")
+
+# Configure Gemini
 genai.configure(api_key=API_KEY)
 
-# Load the Gemini model
+# Load the model
 model = genai.GenerativeModel("gemini-1.5-flash-latest")
 
-# Function to generate response
+# Generate response
 def get_response(prompt: str) -> str:
     try:
         response = model.generate_content(prompt)
